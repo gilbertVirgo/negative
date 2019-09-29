@@ -1,0 +1,18 @@
+@import "variables";
+@import "text";
+@import "align";
+@import "button";
+@import "container";
+@import "preview";
+@import "range";
+@import "form";
+@import "icon";
+@import "animations";
+
+html, body { margin: 0 }
+
+main {
+    min-height: 100vh;
+    overflow: auto;
+    background-color: $dark;
+}

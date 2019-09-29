@@ -1,0 +1,31 @@
+.button {
+    position: relative;
+    appearance: none;
+    border: none;
+    box-sizing: border-box;
+    padding: 10px 14px;
+    display: block;
+    text-transform: uppercase;
+    background: linear-gradient(-70deg, $success, $primary);
+    border-radius: 100px;
+    transition: all 0.5s;
+    outline: none;
+
+    &.small { padding: 6px 10px }
+    &.large { padding: 14px 24px }
+    &.center { margin-left: auto; margin-right: auto }
+
+    &:hover { 
+        filter: hue-rotate(70deg);
+    }
+
+    input[type="file"] {
+        cursor: pointer;
+        opacity: 0;
+        position: absolute;
+        left: 0; top: 0;
+        width: 100%; height: 100%;
+    }
+
+    @extend .sans-serif, .thin, [align="center"], .text-light, .box-shadow, .margin;
+}

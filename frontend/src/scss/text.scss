@@ -1,0 +1,21 @@
+body, p, button, label, input { font-size: 15px; letter-spacing: .5px }
+
+.serif { font-family: "Patua One", serif }
+.sans-serif { font-family: "Nunito", sans-serif }
+
+.text-small { font-size: 12px; letter-spacing: .4px }
+.text-large { font-size: 30px; letter-spacing: 1.2px }
+
+.thin { font-weight: 200 }
+.thick { font-weight: 700 }
+
+.text-primary { color: $primary }
+.text-success { color: $success }
+.text-danger { color: $danger }
+.text-dark { color: $dark }
+.text-muted { color: $muted }
+.text-light { color: $light }
+
+[align="left"] { text-align: left }
+[align="right"] { text-align: right }
+[align="center"] { text-align: center }

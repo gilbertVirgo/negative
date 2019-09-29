@@ -1,0 +1,43 @@
+$primary: #00638E;
+$success: #07C190;
+$danger: #E24822;
+$dark: #152D3A;
+$muted: #9DB5B2;
+$light: #F6F0ED;
+
+[variant="primary"] {
+    background-color: $primary;
+    color: $light;
+    fill: $primary;
+    stroke: $primary;
+}
+[variant="success"] {
+    background-color: $success;
+    color: $light;
+    fill: $success;
+    stroke: $success;
+}
+[variant="danger"] {
+    background-color: $danger;
+    color: $light;
+    fill: $danger;
+    stroke: $danger;
+}
+[variant="dark"] {
+    background-color: $dark;
+    color: $light;
+    fill: $dark;
+    stroke: $dark;
+}
+[variant="light"] {
+    background-color: $light;
+    color: $dark;
+    fill: $light;
+    stroke: $light;
+}
+
+.box-shadow { box-shadow: 0 5px 10px rgba(0, 0, 0, 0.23) }
+.margin { margin: 0 0 10px }
+.margin-small { margin: 0 0 5px }
+.margin-large { margin: 0 0 20px }
+.padding { padding: 10px; box-sizing: border-box }

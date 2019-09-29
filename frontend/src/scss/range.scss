@@ -1,0 +1,49 @@
+$height: 16px;
+
+.range-outer {
+    position: relative;
+    width: 100%;
+    height: $height;
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Old versions of Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome, Opera and Firefox */
+
+    @extend .margin-large;
+
+    .range-bar {
+        position: relative;
+        top: $height / 2.5;
+        height: $height / 4;
+        border-radius: $height / 4;
+        background: linear-gradient(-70deg, $success, $primary);
+        pointer-events: none;
+
+        &.warmth {
+            background: linear-gradient(-70deg, $danger, $primary);
+        }
+    }
+    
+    .range-control {
+        position: absolute;
+        top: 0; left: 0;
+        background-color: $light;
+        width: $height;
+        height: $height;
+        border-radius: $height;
+        z-index: 1000;
+
+        transition: border-width 0.3s;
+        box-sizing: border-box;
+        border-color: $muted;
+        border-width: 0;
+        border-style: solid;
+    
+        &:active {
+            border-width: 2px;
+        }
+    }
+}

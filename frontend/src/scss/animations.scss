@@ -1,0 +1,15 @@
+.rotate-left {
+    transition: transform 0.3s;
+
+    &:hover {
+        transform: rotate(-45deg);
+    }
+}
+
+.rotate-right {
+    transition: transform 0.3s;
+
+    &:hover {
+        transform: rotate(45deg);
+    }
+}
