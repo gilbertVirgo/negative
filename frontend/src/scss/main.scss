@@ -1,4 +1,5 @@
 @import "variables";
+@import "mixins";
 @import "text";
 @import "align";
 @import "button";
@@ -8,6 +9,7 @@
 @import "form";
 @import "icon";
 @import "animations";
+@import "section";
 
 html, body { margin: 0 }
 
@@ -15,4 +17,9 @@ main {
     min-height: 100vh;
     overflow: auto;
     background-color: $dark;
+
+    &.dragging {
+        user-select: none;
+        touch-action: none;
+    }
 }

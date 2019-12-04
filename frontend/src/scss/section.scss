@@ -1,0 +1,17 @@
+.section {
+    padding: 10px 0; box-sizing: border-box;
+
+    h1, h2, h3, h4, h5, h6, p {
+        margin: 0;
+    }
+
+    hr {
+        background-color: $muted;
+        height: 1px;
+        border: none;
+        display: block;
+        margin: 5px 0 15px;
+    }
+
+    @extend .margin-small;
+}

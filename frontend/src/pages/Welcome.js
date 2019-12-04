@@ -1,8 +1,7 @@
-import React, {useState} from "react";
+import React from "react";
 
 import Container from "../components/Container";
 import Button from "../components/Button";
-import Range from "../components/Range";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faUpload } from "@fortawesome/free-solid-svg-icons"
@@ -15,7 +14,7 @@ const Welcome = ({onFile}) => (
         <Button className="center large">
             Upload image <FontAwesomeIcon icon={faUpload}/>
             <input 
-                type="file" title="Upload an image" 
+                type="file" title="Upload an image" accept="image/*"
                 onChange={({target: {files: [file]}}) => onFile(file)}/>
         </Button>
     </Container>

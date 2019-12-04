@@ -5,6 +5,8 @@ $dark: #152D3A;
 $muted: #9DB5B2;
 $light: #F6F0ED;
 
+$desktop: 1200px;
+
 [variant="primary"] {
     background-color: $primary;
     color: $light;
@@ -36,8 +38,8 @@ $light: #F6F0ED;
     stroke: $light;
 }
 
-.box-shadow { box-shadow: 0 5px 10px rgba(0, 0, 0, 0.23) }
-.margin { margin: 0 0 10px }
-.margin-small { margin: 0 0 5px }
-.margin-large { margin: 0 0 20px }
-.padding { padding: 10px; box-sizing: border-box }
+.box-shadow     { box-shadow: 0 5px 10px rgba(0, 0, 0, 0.23) }
+.margin         { margin-bottom: 10px }
+.margin-small   { margin-bottom: 5px }
+.margin-large   { margin-bottom: 20px }
+.padding        { padding: 10px; box-sizing: border-box }

@@ -1,9 +1,10 @@
+$width: 75px;
 $height: 16px;
 
 .range-outer {
+    @extend label, .text-light;
+
     position: relative;
-    width: 100%;
-    height: $height;
     -webkit-touch-callout: none; /* iOS Safari */
     -webkit-user-select: none; /* Safari */
      -khtml-user-select: none; /* Konqueror HTML */
@@ -11,19 +12,31 @@ $height: 16px;
         -ms-user-select: none; /* Internet Explorer/Edge */
             user-select: none; /* Non-prefixed version, currently
                                   supported by Chrome, Opera and Firefox */
+    display: inline-block !important;
+    width: $width;
+    height: 100%;
+    margin-right: 20px !important;
 
-    @extend .margin-large;
+    &::after {
+        content: attr(label);
+        text-align: center;
+        position: relative;
+        top: 10px;
+        font-size: 12px; line-height: 16px; letter-spacing: .4px
+    }
 
     .range-bar {
         position: relative;
-        top: $height / 2.5;
-        height: $height / 4;
         border-radius: $height / 4;
-        background: linear-gradient(-70deg, $success, $primary);
+        background: linear-gradient(-115deg, $success, $primary);
         pointer-events: none;
+        touch-action: none;
+        left: $width / 8;
+        width: $width / (4 / 3); // 75%
+        height: calc(100% - 30px); // leave space for label
 
         &.warmth {
-            background: linear-gradient(-70deg, $danger, $primary);
+            background: linear-gradient(-115deg, $danger, $primary);
         }
     }
     
@@ -31,16 +44,16 @@ $height: 16px;
         position: absolute;
         top: 0; left: 0;
         background-color: $light;
-        width: $height;
-        height: $height;
-        border-radius: $height;
         z-index: 1000;
-
         transition: border-width 0.3s;
         box-sizing: border-box;
         border-color: $muted;
         border-width: 0;
         border-style: solid;
+        touch-action: none;
+        width: 100%;
+        height: $height;
+        border-radius: $height;
     
         &:active {
             border-width: 2px;

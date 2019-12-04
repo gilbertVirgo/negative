@@ -2,12 +2,12 @@ import React, {useEffect, useState} from "react";
 import Icon from "./Icon";
 import Container from "./Container";
 
-const RotateControls = ({onChange, defaultValue}) => {
-    const [rotate, setRotate] = useState(defaultValue);
+const RotateControls = ({onChange}) => {
+    const [rotate, setRotate] = useState(0);
 
     useEffect(() => {
         if(onChange) onChange(rotate);
-    }, [rotate]);
+    }, [rotate, onChange]);
 
     return (
         <Container>

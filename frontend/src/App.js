@@ -1,14 +1,14 @@
 import React, {useState} from 'react';
 import {Switch, Route, withRouter} from "react-router-dom";
 
-import Container from './components/Container';
-
 import Welcome from "./pages/Welcome";
 import Editor from "./pages/Editor";
 
 import imageCompression from "browser-image-compression";
 
 import "./scss/main.scss";
+
+require('dotenv').config()
 
 const toDataURL = async file => new Promise((resolve, reject) => {
 	const reader = new FileReader();
@@ -20,28 +20,41 @@ const toDataURL = async file => new Promise((resolve, reject) => {
 });
 
 const App = ({history}) => {
-  	const [image, setImage] = useState(null);
+	const [preview, setPreview] = useState(null);
+	const [fullRes, setFullRes] = useState(null);	  
 
 	const handleFile = async file => {
-		// Handle exif
-		file = await imageCompression(file, {maxSizeMB: 5});
+		// Split file into low-res and high-res copies. Force synchronus
 
+		// Handle exif (rotation problems)
+		file = await imageCompression(file, {maxSizeMB: 5});
 		const dataURL = await toDataURL(file);
 
-		let image = new Image();
-		
-		image.onload = () => {
-			setImage(image);
-			history.push("/editor");
-		}
+		let fullRes = new Image();
 
-		image.src = dataURL;
+		await new Promise(resolve => {
+			fullRes.onload = resolve;
+			fullRes.src = dataURL;
+		});
+		setFullRes(fullRes);
+
+		// Downsize image for preview
+		const exp = process.env.REACT_APP_CANVAS_WIDTH / Math.max(fullRes.width, fullRes.height);
+
+		let preview = new Image(fullRes.width * exp, fullRes.height * exp);
+		
+		await new Promise(resolve => {
+			preview.onload = resolve;
+			preview.src = dataURL;
+		});
+		setPreview(preview);
+
+		history.push("/editor");
 	}
 
 	return (
-		<main>
-			<Container className="large">
-				<Switch>
+		<main id="main">
+			<Switch>
 				<Route 
 					exact path="/" 
 					render={
@@ -50,10 +63,9 @@ const App = ({history}) => {
 				<Route
 					path="/editor"
 					render={
-						() => <Editor image={image}/>
+						() => <Editor image={preview}/>
 					}/>
-				</Switch>
-			</Container>
+			</Switch>
 		</main>
 	);
 }

@@ -1,6 +1,6 @@
 label {
-    text-transform: uppercase;
     display: block;
+    user-select: none;
 
-    @extend .thin, .text-light, .sans-serif, .margin-small;
+    @extend .caps, .thin, .sans-serif;
 }

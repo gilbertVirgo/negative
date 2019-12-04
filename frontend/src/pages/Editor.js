@@ -14,11 +14,12 @@ const Editor = ({image, history}) => {
     const [filter, setFilter] = useState("");
     const [rotate, setRotate] = useState(0);
     const [events, setEvents] = useState([]);
+    const [loaded, setLoaded] = useState(false);
 
     useEffect(() => {
         // Send home if no image
         if(!image) history.push("/");
-    }, []);
+    }, [image, history]);
 
     useEffect(() => {
         // On canvas load
@@ -31,6 +32,7 @@ const Editor = ({image, history}) => {
         // On context set
         if(context !== null) {
             context.renderPreview({image, filter, rotate, events});
+            setLoaded(true);
         }
     }, [context, image, filter, rotate, events]);
 
@@ -46,10 +48,12 @@ const Editor = ({image, history}) => {
     }
 
     return (
-        <Container className="small">
+        <Container>
             <RotateControls onChange={value => setRotate(value)}/>
-            <canvas className="preview" ref={canvas}/>
-            <FilterControls onChange={value => setFilter(value)} onEvent={handleEvent}/>
+            <section className="margin-large" className="container small">
+                <canvas className="preview" ref={canvas}/>
+            </section>
+            {loaded && <FilterControls onChange={value => setFilter(value)} onEvent={handleEvent}/>}
         </Container>
     )
 }
